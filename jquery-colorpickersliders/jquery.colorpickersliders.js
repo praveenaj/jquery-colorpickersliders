@@ -187,6 +187,7 @@
                     titleswatchesreset: "Reset to default swatches",
                     order: {},
                     labels: {},
+                    staticHue: false,
                     onchange: function() {
                     }
                 }, options);
@@ -977,7 +978,12 @@
             }
 
             function _renderHue() {
-                setGradient(elements.sliders.hue, $.fn.ColorPickerSliders.getScaledGradientStops(color.hsla, "h", 0, 360, 7));
+                var hsla = $.extend(true, {},color.hsla);
+                if(settings.staticHue){
+                    hsla.s = 0.5;
+                    hsla.l = 0.5;
+                }
+                setGradient(elements.sliders.hue, $.fn.ColorPickerSliders.getScaledGradientStops(hsla, "h", 0, 360, 7));
 
                 elements.sliders.hue_marker.css("left", color.hsla.h / 360 * 100 + "%");
             }
