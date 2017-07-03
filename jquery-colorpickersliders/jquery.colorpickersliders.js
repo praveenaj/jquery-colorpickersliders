@@ -980,7 +980,7 @@
             function _renderHue() {
                 var hsla = $.extend(true, {},color.hsla);
                 if(settings.staticHue){
-                    hsla.s = 0.5;
+                    hsla.s = 1;
                     hsla.l = 0.5;
                 }
                 setGradient(elements.sliders.hue, $.fn.ColorPickerSliders.getScaledGradientStops(hsla, "h", 0, 360, 7));
