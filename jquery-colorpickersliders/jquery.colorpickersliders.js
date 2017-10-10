@@ -989,7 +989,12 @@
             }
 
             function _renderSaturation() {
-                setGradient(elements.sliders.saturation, $.fn.ColorPickerSliders.getScaledGradientStops(color.hsla, "s", 0, 1, 2));
+                var hsla = $.extend(true, {},color.hsla);
+                if(settings.staticHue){
+                    hsla.s = 1;
+                    hsla.l = 0.5;
+                }
+                setGradient(elements.sliders.saturation, $.fn.ColorPickerSliders.getScaledGradientStops(hsla, "s", 0, 1, 2));
 
                 elements.sliders.saturation_marker.css("left", color.hsla.s * 100 + "%");
             }
